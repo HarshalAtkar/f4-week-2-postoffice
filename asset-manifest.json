@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/f4-week-2-postoffice/static/css/main.17794069.css",
+    "main.js": "/f4-week-2-postoffice/static/js/main.649de7b6.js",
+    "index.html": "/f4-week-2-postoffice/index.html",
+    "main.17794069.css.map": "/f4-week-2-postoffice/static/css/main.17794069.css.map",
+    "main.649de7b6.js.map": "/f4-week-2-postoffice/static/js/main.649de7b6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.17794069.css",
+    "static/js/main.649de7b6.js"
+  ]
+}
