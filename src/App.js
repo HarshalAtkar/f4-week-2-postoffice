@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import CircularIndeterminate from "./loader";
 
 function App() {
   const [pincode, setPincode] = useState("");
   const [filteredPincode, setFilteredPincode] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [filterText, setFilterText] = useState('');
 
   useEffect(() => {
     if (pincode.length === 6) {
@@ -43,15 +45,19 @@ function App() {
 
   const handleFilterChange = (e) => {
     const filter = e.target.value.toLowerCase();
+    setFilterText(filter);
+    console.log(filter);
     const filteredResults =
       pincode.length === 6
         ? filteredPincode.filter((item) =>
             item.Name.toLowerCase().includes(filter)
           )
         : [];
-
+     console.log("filteredresult",filteredResults)
     setFilteredPincode(filteredResults);
   };
+
+  
 
   return (
     <div className="App">
@@ -71,7 +77,7 @@ function App() {
           </button>
         </form>
 
-        {loading && <div className="loader">Loading...</div>}
+        {loading && <div className="loader"><CircularIndeterminate/></div>}
 
         {error && <div className="error">{error}</div>}
 
@@ -89,17 +95,12 @@ function App() {
             <input
               type="text"
               id="filterInput"
-              value={
-                pincode.length === 6
-                  ? ""
-                  : filteredPincode.length > 0
-                  ? filteredPincode[0].Name
-                  : ""
-              }
+              value={filterText}
               onChange={handleFilterChange}
               disabled={pincode.length !== 6}
               placeholder="Filter"
             />
+          
             {filteredPincode.map((item, index) => (
               <div key={index} className="result-item">
                 <p>
